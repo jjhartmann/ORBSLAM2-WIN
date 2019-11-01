@@ -27,6 +27,10 @@
 #ifndef G2O_OS_SPECIFIC_HH_
 #define G2O_OS_SPECIFIC_HH_
 
+#if defined(_WIN32) or defined(_WIN64)
+#define WINDOWS
+#endif
+
 #ifdef WINDOWS
 #include <stdio.h>
 #include <stdlib.h>
