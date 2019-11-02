@@ -14,6 +14,10 @@ ENDIF()
 MESSAGE(STATUS "BUILD TYPE:" ${CMAKE_BUILD_TYPE})
 
 SET (G2O_LIB_TYPE SHARED)
+if(WIN32)
+    SET (G2O_LIB_TYPE "STATIC")
+endif(WIN32)
+
 
 # There seems to be an issue with MSVC8
 # see http://eigen.tuxfamily.org/bz/show_bug.cgi?id=83
@@ -58,8 +62,8 @@ SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=native")
 SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O3 -march=native") 
 
 # activate warnings !!!
-SET(g2o_C_FLAGS "${g2o_C_FLAGS} -Wall -W3")
-SET(g2o_CXX_FLAGS "${g2o_CXX_FLAGS} -Wall -W3")
+SET(g2o_C_FLAGS "${g2o_C_FLAGS} -Wall -W0")
+SET(g2o_CXX_FLAGS "${g2o_CXX_FLAGS} -Wall -W0")
 
 # specifying compiler flags
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${g2o_CXX_FLAGS}")

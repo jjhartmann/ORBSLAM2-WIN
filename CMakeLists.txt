@@ -28,6 +28,17 @@ else()
    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
+if (MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W0")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++latest")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zm2000")
+
+    add_compile_definitions(_ENFORCE_MATCHING_ALLOCATORS=0)
+
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif()
+
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 
 find_package(OpenCV 3.0 QUIET)
@@ -70,15 +81,21 @@ src/KeyFrameDatabase.cc
 src/Sim3Solver.cc
 src/Initializer.cc
 src/Viewer.cc
+src/OSSpecific.cc
 )
 
 target_link_libraries(${PROJECT_NAME}
 ${OpenCV_LIBS}
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
-${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/DBoW2.dll
-${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/g2o.dll
+${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/DBoW2.lib
+${PROJECT_SOURCE_DIR}/Thirdparty/g2o/bin/g2o.lib
 )
+
+
+if (MSVC)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE WIN_EXPORT)
+endif()
 
 # Build examples
 
