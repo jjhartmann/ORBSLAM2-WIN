@@ -40,5 +40,18 @@ For versions greater than 3.1.1 is MPL2, earlier versions are LGPLv3.
 BSD license. In the manifest.xml the only declared package dependencies are roscpp, tf, sensor_msgs, image_transport, cv_bridge, which are all BSD licensed.
 
 
+## Windows Build
+
+Install vcpkg (https://github.com/microsoft/vcpkg)
+
+With vcpkg install
+- OpenCV
+- Eigen3
+- Pangolin
+
+Link CMAKE_TOOLCHAIN with vcpkg directory
+
+
+
 
 
