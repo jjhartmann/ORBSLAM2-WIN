@@ -29,6 +29,10 @@
 
 #include<System.h>
 
+#if defined(_WIN32) or defined(_WIN64)
+#include <Windows.h>
+#define usleep(x) Sleep(x)
+#endif
 using namespace std;
 
 void LoadImages(const string &strPathToSequence, vector<string> &vstrImageLeft,

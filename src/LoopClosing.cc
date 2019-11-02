@@ -27,6 +27,7 @@
 #include "Optimizer.h"
 
 #include "ORBmatcher.h"
+#include <OSSpecific.h>
 
 #include<mutex>
 #include<thread>
