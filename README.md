@@ -1,4 +1,19 @@
-# ORB-SLAM2
+
+# ORB-SLAM2 For Windows
+
+Tested on Visual Sutdio 2019 using built-in CMake functionality. 
+
+## Windows Install
+
+1. Open root director in Visual Studio 2019
+2. Get VCPKG (https://github.com/microsoft/vcpkg) and install dependencies through `vcpkg` tool. 
+3. Link VCKPG CMake Toolchain with Visual Studio Cmake module
+4. Build. 
+
+
+
+## Descirption
+
 **Authors:** [Raul Mur-Artal](http://webdiis.unizar.es/~raulmur/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/), [J. M. M. Montiel](http://webdiis.unizar.es/~josemari/) and [Dorian Galvez-Lopez](http://doriangalvez.com/) ([DBoW2](https://github.com/dorian3d/DBoW2))
 
 **13 Jan 2017**: OpenCV 3 and Eigen 3.3 are now supported.
